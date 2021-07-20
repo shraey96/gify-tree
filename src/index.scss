@@ -1,0 +1,53 @@
+$baseGrey: #808080;
+$themeBlack: #121212;
+$themeWhite: #fff;
+
+/* Mixin for phone media query */
+@mixin for-phone-only {
+  @media (max-width: 560px) {
+    @content;
+  }
+}
+
+/* Mixin for transition */
+@mixin transition() {
+  $transition: 0.3s ease-in-out;
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  &.app-body {
+    background-color: $themeBlack;
+    &--disable-scroll {
+      overflow: hidden;
+    }
+    &--dark-mode {
+    }
+  }
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  .gif-items__container {
+    padding-top: 20px;
+  }
+  @include for-phone-only() {
+    max-width: calc(100vw - 16px);
+  }
+}
+
+.empty-text {
+  color: $themeWhite;
+  font-size: 20px;
+  text-align: center;
+}

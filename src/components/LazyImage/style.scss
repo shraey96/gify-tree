@@ -1,0 +1,18 @@
+@import "../../index.scss";
+
+.lazy-img__container {
+  background-color: $baseGrey;
+  @include transition();
+  img {
+    @include transition();
+    border-radius: 8px;
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    opacity: 0;
+
+    &.lazy__img--loaded {
+      opacity: 1;
+    }
+  }
+}
