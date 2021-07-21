@@ -2,7 +2,9 @@ import React, { useState } from "react"
 import VideoPlayer from "./VideoPlayer"
 import LazyImage from "../LazyImage"
 
-const GifImage = ({ id, url, images, title, index, style }) => {
+import { string, shape } from "prop-types"
+
+const GifImage = ({ id, images, title, style }) => {
   const [imageLoadError, setImageLoadError] = useState(false)
   const [isEnlargedView, setIsEnlargedView] = useState(false)
 
@@ -75,6 +77,20 @@ const GifImage = ({ id, url, images, title, index, style }) => {
       )}
     </div>
   )
+}
+
+GifImage.propTypes = {
+  id: string,
+  images: shape({}),
+  style: shape({}),
+  title: string,
+}
+
+GifImage.defaultProps = {
+  id: "",
+  images: {},
+  shape: {},
+  title: "",
 }
 
 export default GifImage

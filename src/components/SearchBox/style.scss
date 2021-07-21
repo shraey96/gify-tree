@@ -1,12 +1,14 @@
+@import "../../index.scss";
+
 .input-box {
   &__container {
     input {
       all: unset;
-      border: 2px solid #2391e0;
+      border: 2px solid $themeBlue;
       padding: 14px;
       border-radius: 8px;
       width: calc(100% - 28px);
-      background: #fff;
+      background: $themeWhite;
       font-size: 20px;
       font-weight: 500;
     }

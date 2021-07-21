@@ -30,7 +30,6 @@ const useInfiniteScroll = ({
       functionToUseOnScroll = debounce(handleScroll, debounceTimer)
     }
 
-    console.log(scrollElement)
     scrollElement &&
       scrollElement.addEventListener("scroll", functionToUseOnScroll)
     return () =>

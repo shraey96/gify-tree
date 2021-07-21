@@ -1,5 +1,13 @@
 let pubSubEvents = {}
 
+/**
+ * @function subscribe
+ * @param {string} eventName
+ * @param {Function} cb
+ *
+ * @description Registers function for mentioned eventName to listen for event. Returns unsubscribe function
+ * @returns {Function}
+ */
 export function subscribe(eventName = "", cb) {
   if (typeof cb !== "function") {
     throw new Error("callback provided is not a function")
@@ -24,6 +32,13 @@ export function subscribe(eventName = "", cb) {
   }
 }
 
+/**
+ * @function publish
+ * @param {string} eventName
+ * @param {Function} data
+ *
+ * @description Dispatches subscribed function for mentioned eventName with data
+ */
 export function publish(eventName = "", data = "") {
   try {
     if (pubSubEvents[eventName]) {
@@ -34,6 +49,11 @@ export function publish(eventName = "", data = "") {
   }
 }
 
+/**
+ * @function clearAllEvents
+ *
+ * @description Clears all subscribed events for pub-sub
+ */
 export function clearAllEvents() {
   pubSubEvents = {}
 }

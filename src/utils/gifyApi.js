@@ -1,7 +1,5 @@
 import { fetchJSONPromise } from "./helpers"
 
-// to do => add abort controller
-
 import {
   API_KEY,
   TRENDING_GIFS_BASE_API,

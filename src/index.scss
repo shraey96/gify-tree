@@ -1,10 +1,19 @@
 $baseGrey: #808080;
 $themeBlack: #121212;
 $themeWhite: #fff;
+$themeBlue: #2391e0;
+$themeGreen: #bada55;
+$themeFullBlack: #000;
 
 /* Mixin for phone media query */
 @mixin for-phone-only {
   @media (max-width: 560px) {
+    @content;
+  }
+}
+
+@mixin for-small-phone-only {
+  @media (max-width: 360px) {
     @content;
   }
 }
@@ -24,21 +33,27 @@ body {
   margin: 0;
   padding: 0;
 
+  --text-color: #{$themeWhite};
+  --bg-color: #{$themeBlack};
+
   &.app-body {
-    background-color: $themeBlack;
     &--disable-scroll {
       overflow: hidden;
     }
-    &--dark-mode {
+    &--white-mode {
+      --text-color: #{$themeBlack};
+      --bg-color: #{$themeWhite};
     }
+    @include transition();
+    background-color: var(--bg-color);
   }
 }
 
 .App {
-  max-width: 1200px;
+  max-width: 1040px;
   margin: 0 auto;
   padding-top: 20px;
-  .gif-items__container {
+  .gif-items__wrapper {
     padding-top: 20px;
   }
   @include for-phone-only() {
@@ -50,4 +65,8 @@ body {
   color: $themeWhite;
   font-size: 20px;
   text-align: center;
+}
+
+.toastContainer {
+  z-index: 2;
 }

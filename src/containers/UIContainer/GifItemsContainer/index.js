@@ -9,6 +9,7 @@ import {
 import {
   getLocalStorageCachedResults,
   setLocalStorageCachedResults,
+  getContainerWidth,
 } from "utils/helpers"
 
 import useInfiniteScroll from "customHooks/useInfiniteScroll"
@@ -65,7 +66,10 @@ const GifItemsContainer = ({ parentRef }) => {
   //   optimize this
 
   const { columns, gutter, gifWidth } = useMemo(
-    () => getBaseConfigForMasonryLayout(parentRef.current),
+    () =>
+      getBaseConfigForMasonryLayout(
+        parentRef.current ? getContainerWidth(parentRef.current) : 1040
+      ),
     [parentRef.current]
   )
 

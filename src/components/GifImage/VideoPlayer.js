@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react"
+import { toast } from "react-toastify"
 import { string, func } from "prop-types"
 import "./style.scss"
 
@@ -15,9 +16,8 @@ const VideoPlayer = ({ videoPoster, videoSrc, onClose }) => {
     }
   }
 
-  const handleVideoLoadError = () => {
-    console.log("error")
-  }
+  const handleVideoLoadError = () =>
+    toast.error(`Sorry, we couldn't load the GIF :(`)
 
   const toggleBodyScroll = (disable = true) => {
     const bodyDOM = document.querySelector("body")

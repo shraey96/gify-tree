@@ -19,3 +19,4 @@ export const LAZY_IMG_LOADER_BGS = [
 export const PUB_SUB_DEBOUNCE_GIF_SEARCH = "DEBOUNCE_GIF_SEARCH"
 
 export const LOCAL_STORAGE_CACHED_RESULTS_KEY = "appResultsCache"
+export const LOCAL_STORAGE_IS_DARK_MODE = "appIsDarkMode"
