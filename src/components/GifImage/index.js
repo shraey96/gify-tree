@@ -24,7 +24,6 @@ const GifImage = ({ id, images, title, style }) => {
     original_mp4 = {},
   } = images
 
-  const { webp: originalWebP, url: originalURL } = original
   const { url: downSizedURL } = downsized
   const { webp: downSampledWebP, url: downSampledURL } = fixed_width_downsampled
   const { webp: previewWebP } = preview_webp

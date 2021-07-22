@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useMemo } from "react"
+import { toast } from "react-toastify"
 
 import { fetchTrendingGifs, fetchSearchQueryGifs } from "utils/gifyApi"
 import {
@@ -24,7 +25,9 @@ import { PUB_SUB_DEBOUNCE_GIF_SEARCH } from "../../../constants"
 const initialCachedResults = getLocalStorageCachedResults()
 
 const GifItemsContainer = ({ parentRef }) => {
-  const [isAtBottom, setIsAtBottom] = useInfiniteScroll({})
+  const [isAtBottom, setIsAtBottom] = useInfiniteScroll({
+    bottomOffsetThresholdPercent: 95,
+  })
 
   const [isFetching, setIsFetching] = useState(false)
   const [data, setData] = useState(initialCachedResults)
@@ -47,7 +50,8 @@ const GifItemsContainer = ({ parentRef }) => {
         }
       }
     } catch (error) {
-      console.log("failed to fetch")
+      console.log(error)
+      toast.error(`Sorry, we couldn't load more GIFs :(`)
     }
     setIsFetching(false)
   }
@@ -67,8 +71,6 @@ const GifItemsContainer = ({ parentRef }) => {
     subscribe(PUB_SUB_DEBOUNCE_GIF_SEARCH, handleGifSearchFromAPI)
   }
 
-  //   optimize this
-
   const { columns, gutter, gifWidth } = useMemo(
     () =>
       getBaseConfigForMasonryLayout(
@@ -77,7 +79,10 @@ const GifItemsContainer = ({ parentRef }) => {
     [parentRef.current]
   )
 
-  const itemHeights = getGifItemHeights(data, gifWidth)
+  const itemHeights = useMemo(
+    () => getGifItemHeights(data, gifWidth),
+    [data.length]
+  )
 
   useEffect(() => {
     handleFetch()
