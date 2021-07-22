@@ -46,6 +46,7 @@ const VideoPlayer = ({ videoPoster, videoSrc, onClose }) => {
         <video
           controls
           autoPlay
+          loop
           src={videoSrc}
           type="video/mp4"
           poster={videoPoster}

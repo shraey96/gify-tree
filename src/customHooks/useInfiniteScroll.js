@@ -13,7 +13,7 @@ const useInfiniteScroll = ({
     const el = e.target.documentElement
     const scrollPercent = el.scrollTop / (el.scrollHeight - el.clientHeight)
 
-    if (scrollPercent >= bottomOffsetThresholdPercent / 100) {
+    if (scrollPercent * 100 >= bottomOffsetThresholdPercent) {
       setIsAtBottom(true)
     } else {
       setIsAtBottom(false)

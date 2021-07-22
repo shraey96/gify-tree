@@ -24,10 +24,9 @@ const MasonryGrid = memo(
         const { images } = child.props
         const style = {
           position: "absolute",
+          cursor: "pointer",
         }
-        columnTarget = columnHeights.indexOf(
-          Math.min.apply(Math, columnHeights)
-        )
+        columnTarget = columnHeights.indexOf(Math.min(...columnHeights))
         const top = `${columnHeights[columnTarget]}px`
         const left = `${columnTarget * itemWidth + columnTarget * gutter}px`
 
@@ -58,9 +57,7 @@ const MasonryGrid = memo(
       })
       containerStyle.position = "relative"
       containerStyle.width = `${columns * itemWidth + (columns - 1) * gutter}px`
-      containerStyle.height = `${
-        Math.max.apply(Math, columnHeights) - gutter
-      }px`
+      containerStyle.height = `${Math.max(...columnHeights) - gutter}px`
       return result
     }
 
