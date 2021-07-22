@@ -57,6 +57,10 @@ const GifItemsContainer = ({ parentRef }) => {
     currentSearchTerm.current = val
     setData([])
     handleFetch(val)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
 
   const bindGifSearchSubscriber = () => {
