@@ -43,7 +43,7 @@ export const getGifWidth = ({ images }, gifHeight) => {
  */
 
 export const fillArray = (length, columnOffsets = []) =>
-  Array.apply(null, Array(length)).map((_, index) => columnOffsets[index] || 0)
+  new Array(length).fill(null).map((_, index) => columnOffsets[index] || 0)
 
 /**
  * @function getBaseConfigForMasonryLayout
@@ -62,7 +62,7 @@ export const getBaseConfigForMasonryLayout = (customWidth) => {
   const gutter = 10
   const gutterOffset = gutter * (columns - 1)
   const gifWidth = Math.floor((width - gutterOffset) / columns)
-
+  //   masonary layout works on either constant heights or constant widths
   return {
     columns,
     gutter,

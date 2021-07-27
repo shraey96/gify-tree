@@ -16,7 +16,6 @@ const GifImage = ({ id, images, title, style }) => {
   const handleVideoPlayerClose = () => setIsEnlargedView(false)
 
   const {
-    original = {},
     downsized = {},
     fixed_width_downsampled = {},
     preview_webp = {},
@@ -24,7 +23,6 @@ const GifImage = ({ id, images, title, style }) => {
     original_mp4 = {},
   } = images
 
-  const { url: downSizedURL } = downsized
   const { webp: downSampledWebP, url: downSampledURL } = fixed_width_downsampled
   const { webp: previewWebP } = preview_webp
   const { url: previewURL } = preview_gif
@@ -60,7 +58,7 @@ const GifImage = ({ id, images, title, style }) => {
         srcset=""
         sizes=""
         pictureSrcSets={constructuredPictureSetURL}
-        src={downSizedURL}
+        src={downSampledURL}
         alt={title}
         id={id}
         onLoad={() => {}}

@@ -117,9 +117,9 @@ LazyImage.propTypes = {
   src: string,
   alt: string,
   containerStyle: shape({}),
-  containerClasses: "",
+  containerClasses: string,
   imageStyle: shape({}),
-  imageClasses: "",
+  imageClasses: string,
   rootMargin: string,
   shouldLoadImmediately: bool,
   pictureSrcSets: arrayOf(

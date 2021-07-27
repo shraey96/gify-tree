@@ -16,19 +16,21 @@ const MasonryGrid = memo(
     randomlyFillBgColor,
   }) => {
     const containerStyle = {}
-
     const getChildren = () => {
       let columnTarget
       const columnHeights = fillArray(columns)
+
       const result = React.Children.map(children, (child, index) => {
         const { images } = child.props
         const style = {
           position: "absolute",
           cursor: "pointer",
         }
+
         columnTarget = columnHeights.indexOf(Math.min(...columnHeights))
         const top = `${columnHeights[columnTarget]}px`
         const left = `${columnTarget * itemWidth + columnTarget * gutter}px`
+        // left => item width * columnNumber to adjust left spacing + columnNumber * gutter
 
         if (useTransform) {
           style.transform = `translate3d(${left}, ${top}, 0)`
@@ -53,15 +55,21 @@ const MasonryGrid = memo(
         if (height) {
           columnHeights[columnTarget] += height + gutter
         }
+        containerStyle.position = "relative"
+        containerStyle.width = `${
+          columns * itemWidth + (columns - 1) * gutter
+        }px`
+        containerStyle.height = `${Math.max(...columnHeights) - gutter}px`
         return React.cloneElement(child, { style })
       })
-      containerStyle.position = "relative"
-      containerStyle.width = `${columns * itemWidth + (columns - 1) * gutter}px`
-      containerStyle.height = `${Math.max(...columnHeights) - gutter}px`
+
       return result
     }
 
     return <div style={containerStyle}>{getChildren()}</div>
+  },
+  (prev, next) => {
+    return prev.children.length === next.children.length
   }
 )
 
