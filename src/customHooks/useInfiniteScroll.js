@@ -13,11 +13,21 @@ const useInfiniteScroll = ({
     const el = e.target.documentElement
     const scrollPercent = el.scrollTop / (el.scrollHeight - el.clientHeight)
 
-    if (scrollPercent * 100 >= bottomOffsetThresholdPercent) {
-      setIsAtBottom(true)
-    } else {
-      setIsAtBottom(false)
-    }
+    // if (scrollPercent * 100 >= bottomOffsetThresholdPercent) {
+    //   setIsAtBottom(true)
+    // }
+    // else {
+    //   setIsAtBottom(false)
+    // }
+
+    // if (
+    //   window.innerHeight + document.documentElement.scrollTop !==
+    //   document.documentElement.offsetHeight
+    // )
+    //   return
+    // setIsAtBottom(true)
+    if (el.clientHeight + el.scrollTop !== el.offsetHeight) setIsAtBottom(false)
+    else setIsAtBottom(true)
   }
 
   useEffect(() => {

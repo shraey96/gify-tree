@@ -30,7 +30,7 @@ const MasonryGrid = memo(
         columnTarget = columnHeights.indexOf(Math.min(...columnHeights))
         const top = `${columnHeights[columnTarget]}px`
         const left = `${columnTarget * itemWidth + columnTarget * gutter}px`
-        // left => item width * columnNumber to adjust left spacing + columnNumber * gutter
+        // left => item width * columnNumber to adjust left spacing + columnNumber * gutter. since all of them have fixed widths, you can multiple via column target
 
         if (useTransform) {
           style.transform = `translate3d(${left}, ${top}, 0)`
@@ -40,7 +40,7 @@ const MasonryGrid = memo(
         }
 
         if (images) {
-          const gifHeight = getGifHeight({ images }, itemWidth)
+          const gifHeight = itemHeights[index]
           const gifWidth = getGifWidth({ images }, gifHeight)
           style.height = gifHeight
           style.width = gifWidth

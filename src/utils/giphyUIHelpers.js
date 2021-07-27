@@ -62,7 +62,7 @@ export const getBaseConfigForMasonryLayout = (customWidth) => {
   const gutter = 10
   const gutterOffset = gutter * (columns - 1)
   const gifWidth = Math.floor((width - gutterOffset) / columns)
-  //   masonary layout works on either constant heights or constant widths
+  //   masonary layout works on  widths
   return {
     columns,
     gutter,

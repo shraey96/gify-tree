@@ -66,6 +66,7 @@ const GifItemsContainer = ({ parentRef }) => {
       toast.error(`Sorry, we couldn't load more GIFs :(`)
     }
     setIsFetching(false)
+    setIsAtBottom(false)
   }
 
   const handleGifSearchFromAPI = (val) => {

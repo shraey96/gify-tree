@@ -11,12 +11,11 @@ const GifImage = ({ id, images, title, style }) => {
   const handleImageClick = () => setIsEnlargedView(true)
   const handleImageLoadError = () => setImageLoadError(true)
 
-  if (imageLoadError) return null
-
   const handleVideoPlayerClose = () => setIsEnlargedView(false)
 
+  if (imageLoadError) return null
+
   const {
-    downsized = {},
     fixed_width_downsampled = {},
     preview_webp = {},
     preview_gif = {},
@@ -55,8 +54,6 @@ const GifImage = ({ id, images, title, style }) => {
     <div>
       <LazyImage
         containerStyle={style}
-        srcset=""
-        sizes=""
         pictureSrcSets={constructuredPictureSetURL}
         src={downSampledURL}
         alt={title}
