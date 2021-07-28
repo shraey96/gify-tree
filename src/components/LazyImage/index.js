@@ -51,7 +51,7 @@ const LazyImage = ({
     if (!imageRef.current.src && shouldLoadImmediately) {
       imageRef.current.src = src
     }
-  }, [shouldLoadImmediately])
+  }, [shouldLoadImmediately, src])
 
   useEffect(() => {
     if (
@@ -62,7 +62,7 @@ const LazyImage = ({
       updatePictureSrc()
       imageRef.current.src = src
     }
-  }, [entry.intersectionRatio, entry.isIntersecting])
+  }, [entry.intersectionRatio, entry.isIntersecting, src])
 
   const handleonImageLoad = () => {
     imageRef.current.classList.add("lazy__img--loaded")

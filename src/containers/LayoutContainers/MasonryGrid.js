@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { arrayOf, shape, bool, number, element } from "prop-types"
 
-import { getGifHeight, getGifWidth, fillArray } from "utils/giphyUIHelpers"
+import { getGifWidth, fillArray } from "utils/giphyUIHelpers"
 
 import { LAZY_IMG_LOADER_BGS } from "../../constants"
 

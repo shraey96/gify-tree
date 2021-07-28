@@ -32,10 +32,11 @@ const VideoPlayer = ({ videoPoster, videoSrc, onClose }) => {
     document.addEventListener("keydown", handleKeyDown)
     document.addEventListener("click", handleClick)
     toggleBodyScroll(true)
+    const videoRefVar = videoRef.current
     return () => {
       document.removeEventListener("keydown", handleKeyDown)
       document.removeEventListener("click", handleClick)
-      videoRef.current?.removeAttribute("src")
+      videoRefVar?.removeAttribute("src")
       toggleBodyScroll(false)
     }
   }, [])

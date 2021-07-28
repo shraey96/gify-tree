@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { debounce, throttle } from "../utils/helpers"
 
-const useInfiniteScroll = ({
-  scrollElement = window,
-  throttleTimer = 0,
-  debounceTimer = 0,
-  bottomOffsetThresholdPercent = 100,
-} = {}) => {
+const useInfiniteScroll = ({ throttleTimer = 0, debounceTimer = 0 } = {}) => {
   const [isAtBottom, setIsAtBottom] = useState(false)
 
   const handleScroll = (e) => {
     const el = e.target.documentElement
-    const scrollPercent = el.scrollTop / (el.scrollHeight - el.clientHeight)
-
-    // if (scrollPercent * 100 >= bottomOffsetThresholdPercent) {
-    //   setIsAtBottom(true)
-    // }
-    // else {
-    //   setIsAtBottom(false)
-    // }
-
-    // if (
-    //   window.innerHeight + document.documentElement.scrollTop !==
-    //   document.documentElement.offsetHeight
-    // )
-    //   return
-    // setIsAtBottom(true)
-    if (el.clientHeight + el.scrollTop !== el.offsetHeight) setIsAtBottom(false)
-    else setIsAtBottom(true)
+    if (el.clientHeight + el.scrollTop !== el.scrollHeight) {
+      setIsAtBottom(false)
+    } else {
+      setIsAtBottom(true)
+    }
   }
 
   useEffect(() => {
@@ -40,11 +23,8 @@ const useInfiniteScroll = ({
       functionToUseOnScroll = debounce(handleScroll, debounceTimer)
     }
 
-    scrollElement &&
-      scrollElement.addEventListener("scroll", functionToUseOnScroll)
-    return () =>
-      scrollElement &&
-      scrollElement.removeEventListener("scroll", functionToUseOnScroll)
+    window.addEventListener("scroll", functionToUseOnScroll)
+    return () => window.removeEventListener("scroll", functionToUseOnScroll)
   }, [])
 
   return [isAtBottom, setIsAtBottom]
